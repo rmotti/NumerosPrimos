@@ -2,7 +2,6 @@ import java.io.*;
 import java.util.*;
 import java.util.concurrent.*;
 
-
 class NumberWithIndex {
     long number;
     int index;
@@ -79,6 +78,9 @@ public class PrimeFinder {
             writePrimesToFile(primes, "primes_" + threads + ".txt");
         }
         
+        // Escreve os tempos de execução em um arquivo txt
+        writeExecutionTimesToFile(executionTimes, "execution_times.txt");
+        
         System.out.println("Tempos de execução:");
         for (int threads : threadCounts) {
             System.out.println(threads + " thread(s): " + executionTimes.get(threads) + " ms");
@@ -146,6 +148,16 @@ public class PrimeFinder {
         try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
             for (PrimeResult result : primes) {
                 writer.println(result.prime);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void writeExecutionTimesToFile(Map<Integer, Long> executionTimes, String filename) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
+            for (Map.Entry<Integer, Long> entry : executionTimes.entrySet()) {
+                writer.println(entry.getKey() + " thread(s): " + entry.getValue() + " ms");
             }
         } catch (IOException e) {
             e.printStackTrace();
