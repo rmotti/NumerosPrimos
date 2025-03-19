@@ -100,3 +100,4 @@ A implementação do programa demonstrou que o uso de múltiplas threads pode me
 - Para arquivos maiores, o uso de 5 threads oferece um bom equilíbrio entre desempenho e complexidade.
 - O uso de 10 threads pode ser justificado em cenários com grande volume de dados, mas o ganho de desempenho deve ser avaliado em relação ao custo adicional de recursos.
 
+---
