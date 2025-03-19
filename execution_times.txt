@@ -1,3 +1,16 @@
-1 thread(s): 106 ms
+1 thread(s): 113 ms
 5 thread(s): 27 ms
+10 thread(s): 23 ms
+
+1 thread(s): 111 ms
+5 thread(s): 28 ms
 10 thread(s): 22 ms
+
+1 thread(s): 111 ms
+5 thread(s): 29 ms
+10 thread(s): 21 ms
+
+1 thread(s): 110 ms
+5 thread(s): 28 ms
+10 thread(s): 23 ms
+

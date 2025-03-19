@@ -66,6 +66,9 @@ public class PrimeFinder {
         int[] threadCounts = {1, 5, 10};
         Map<Integer, Long> executionTimes = new HashMap<>();
         
+        // Limpa apenas os arquivos dos primes (primes_1.txt, primes_5.txt, primes_10.txt)
+        cleanPrimeFiles(threadCounts);
+        
         for (int threads : threadCounts) {
             long startTime = System.nanoTime();
             
@@ -78,12 +81,24 @@ public class PrimeFinder {
             writePrimesToFile(primes, "primes_" + threads + ".txt");
         }
         
-        // Escreve os tempos de execução em um arquivo txt
         writeExecutionTimesToFile(executionTimes, "execution_times.txt");
         
         System.out.println("Tempos de execução:");
         for (int threads : threadCounts) {
             System.out.println(threads + " thread(s): " + executionTimes.get(threads) + " ms");
+        }
+    }
+
+    private static void cleanPrimeFiles(int[] threadCounts) {
+        for (int threads : threadCounts) {
+            File file = new File("primes_" + threads + ".txt");
+            if (file.exists()) {
+                if (file.delete()) {
+                    System.out.println("Arquivo " + file.getName() + " deletado com sucesso.");
+                } else {
+                    System.out.println("Falha ao deletar o arquivo " + file.getName() + ".");
+                }
+            }
         }
     }
 
@@ -155,10 +170,11 @@ public class PrimeFinder {
     }
 
     private static void writeExecutionTimesToFile(Map<Integer, Long> executionTimes, String filename) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(filename, true))) { // Modo append (true)
             for (Map.Entry<Integer, Long> entry : executionTimes.entrySet()) {
                 writer.println(entry.getKey() + " thread(s): " + entry.getValue() + " ms");
             }
+            writer.println(); // Adiciona uma linha em branco para separar execuções
         } catch (IOException e) {
             e.printStackTrace();
         }
