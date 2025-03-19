@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import os
 
 def read_execution_times(filename):
     execution_data = {}
@@ -25,6 +26,9 @@ def plot_execution_times(execution_data):
     plt.ylabel("Tempo (ms)")
     plt.legend(title="Threads")
     plt.grid(True)
+    output_path = os.path.join(os.getcwd(), "grafico_execucao.png")
+    plt.savefig(output_path)
+    print(f"Gráfico salvo em: {output_path}")
     plt.show()
 
 if __name__ == "__main__":
