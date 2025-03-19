@@ -1,5 +1,7 @@
 # Análise de Desempenho: Verificação de Números Primos com Threads
-##Discentes: Gustavo Ferreira Cabral e Rodrigo Motti de Santana
+
+## Discentes: Gustavo Ferreira Cabral e Rodrigo Motti de Santana
+
 Este projeto implementa um programa em Java para verificar números primos em um arquivo de entrada, utilizando múltiplas threads para processamento concorrente. O objetivo é comparar o desempenho das versões com 1, 5 e 10 threads, medindo os tempos de execução e analisando a escalabilidade do programa.
 
 ---
